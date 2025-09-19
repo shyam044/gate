@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img style="height:14vh; width:10vw;"
+        src="https://media.licdn.com/dms/image/v2/C5612AQF5AIknJZEY3w/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1641473238093?e=2147483647&v=beta&t=MVMUIqlf5EoyB0QP81Zv0Aj_3WXizSubpvev-Yuo2Zw"
+        class="navbar-image" alt="" />
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto ">
+        <a class="nav-link active" href="#">
+          Home <span class="sr-only">(current)</span>
+        </a>
+        <a class="nav-link" href="#topics" id="clicktopics">Topics</a>
+        <a class="nav-link" href="https://shyam044.github.io/gate-questions/">Questions</a>
+        <a class="nav-link" href="#">Test</a>
+      </div>
+    </div>
+  </nav>
+  <div id="topics">
+    <div class="card">
+      <div id="algo-container" class="m-3">
+        <div class="d-flex flex-row justify-content-center">
+          <p class="topic-shift">Topic-1 :</p>
+          <div class="centering">
+            <button class="btn btn-info topic-size m-3" id="clickalgo">Algorithms</button>
+          </div>
+        </div>
+        <div id="algorithmtopics" class="sub-topic-shift d-none">
+          <a class="btn btn-secondary sub-button m3" href="https://shyam044.github.io/Asymtotic-Notations/">Asymptotic
+            Notation</a><br />
+          <a class="btn btn-secondary sub-button m3" href="https://shyam044.github.io/Time-Complexity/">Time
+            Complexity</a><br />
+          <a class="btn btn-secondary sub-button m3"
+            href="https://shyam044.github.io/Searching-Sorting-Algorithms/">Searching and Sorting Algorithms</a><br />
+          <button class="btn btn-secondary sub-button m3" id="greedyapproach">Greedy
+            Approach</button><br />
+          <div id="greedytopic">
+            <a class="btn btn-success sub-button m3 bordering"
+              href="https://shyam044.github.io/Knapsack-Problem-GreedyApproach-/">Knapsack Problem</a><br />
+            <a class="btn btn-success sub-button m3 bordering"
+              href="https://shyam044.github.io/Job-Sequencing-with-Deadlines/">Job Sequencing With DeadLine</a><br />
+            <a class="btn btn-success sub-button m3 bordering"
+              href="https://shyam044.github.io/optimal-merge-pattern/">Optimal Merge Pattern</a><br />
+            <a class="btn btn-success sub-button m3 bordering" href="https://shyam044.github.io/Huffman-Code/">Huffman
+              Code</a><br />
+            <a class="btn btn-success sub-button m3 bordering"
+              href="https://shyam044.github.io/Minimum-Spanning-Tree/">Minimum Spanning Tree</a><br />
+            <a class="btn btn-success sub-button m3 bordering"
+              href="https://shyam044.github.io/Dijkstra-s-Algorithm/">Dijkstra's Algorithm</a><br />
+          </div>
+          <a class="btn btn-secondary sub-button m3" id="dynamicprogramming">Dynamic
+            Programming</a><br />
+          <div id="dynamictopic">
+            <a class="btn btn-success sub-button m3 bordering"
+              href="https://shyam044.github.io/Longest-Common-SubSequence/">Longest Common Subsequence</a><br />
+            <a class="btn btn-success sub-button m3 bordering"
+              href="https://shyam044.github.io/matrix-chain-multiplication/">Matrix Chain Multiplication</a><br />
+            <a class="btn btn-success sub-button m3 bordering"
+              href="https://shyam044.github.io/multistage-graph/">Multistage Graphs</a><br/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="d-flex flex-row justify-content-center m-3">
+        <p class="topic-shift">Topic-2 : </p>
+        <div id="topics" class="centering">
+          <button class="btn btn-info topic-size" href="#DStopics" id="clickds">Data Structures</button>
+        </div>
+      </div>
+      <div id="DStopics" class="sub-topic-shift">
+        <a class="btn btn-secondary sub-button m3" href="https://shyam044.github.io/Asymtotic-Notations/">Arrays</a>
+        <br />
+        <a class="btn btn-secondary sub-button m3" href="https://shyam044.github.io/Time-Complexity/">Linked Lists</a>
+        <br />
+        <a class="btn btn-secondary sub-button m3"
+          href="https://shyam044.github.io/Searching-Sorting-Algorithms/">Stacks</a>
+        <br />
+        <a class="btn btn-secondary sub-button m3" href="https://shyam044.github.io/Asymtotic-Notations/">Queues</a>
+        <br />
+        <a class="btn btn-secondary sub-button m3" href="https://shyam044.github.io/Asymtotic-Notations/">Trees</a>
+        <br />
+        <a class="btn btn-secondary sub-button m3" href="https://shyam044.github.io/Asymtotic-Notations/">Graphs</a>
+        <br />
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
