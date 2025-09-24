@@ -1,46 +1,131 @@
-.navbar-image {
-  width: 40px;
-  height: 40px;
-  padding: 5px;
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
-.card 
-{
-  background-color:azure;
+
+body {
+  background: linear-gradient(135deg, #f0f8ff, #e6f7ff);
+  min-height: 100vh;
+  padding-bottom: 50px;
 }
-.centering 
-{
-  text-align:center;
+
+/* Navbar */
+.navbar {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
-.topic-size 
-{
-  height:25vh;
-  width:50vw;
-  font-size:xx-large;
-  font-weight:bold;
+
+.navbar-brand img {
+  width: auto;
+  height: 60px;
 }
-.topic-shift 
-{
-  margin-right:8vw;
-  margin-top: 5vw;
-  font-size:xx-large;
-  font-weight:bold;
-  color:green;
+
+.navbar-nav .nav-link {
+  font-size: 1.2rem;
+  margin-right: 20px;
+  transition: color 0.3s;
 }
-.sub-topic-shift 
-{
-  margin-left:40vw;
-  font-size:xx-large;
+
+.navbar-nav .nav-link:hover {
+  color: #00d1b2;
 }
-.sub-button 
-{
-  height:12vh;
-  font-size:xx-large;
-  font-weight:bold;
-  text-align:center;
-  margin-bottom:20px;
+
+/* Card Design */
+.card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 90%;
+  transition: transform 0.3s ease;
 }
-.bordering 
-{
-  border-radius:90vw;
-  margin-left:5vw;
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+/* Topic Text */
+.topic-shift {
+  margin-right: 3vw;
+  font-size: 2rem;
+  color: #17a2b8;
+  font-weight: 700;
+}
+
+/* Topic Buttons */
+.topic-size {
+  padding: 2rem 3rem;
+  font-size: 2rem;
+  font-weight: bold;
+  white-space: nowrap; /* ✅ Prevent line break */
+  text-align: center;
+  border-radius: 12px;
+  width: auto; /* ✅ Let it size according to text */
+  max-width: 90vw;
+  background: linear-gradient(45deg, #00c9ff, #92fe9d);
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.3s;
+}
+
+
+.topic-size:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Subtopic container */
+.sub-topic-shift {
+  margin-top: 20px;
+  margin-left: 5%;
+  transition: all 0.3s ease;
+}
+
+/* Sub Buttons */
+.sub-button {
+  display: block;
+  width: 90%;
+  max-width: 500px;
+  margin: 10px auto;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: transform 0.2s ease, background-color 0.3s;
+}
+
+.sub-button:hover {
+  transform: translateX(10px);
+  background-color: #0dcaf0;
+  color: white;
+}
+
+/* Special styling for bordered buttons */
+.bordering {
+  border-radius: 50px;
+  background: linear-gradient(to right, #43e97b, #38f9d7);
+  color: white;
+  font-weight: bold;
+}
+
+.bordering:hover {
+  background: linear-gradient(to right, #00b09b, #96c93d);
+}
+
+/* Animations for showing/hiding topics */
+.d-none {
+  display: none !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.centering {
+  text-align: center;
 }
