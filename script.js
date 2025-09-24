@@ -1,55 +1,21 @@
-let topic=document.getElementById("topics");
-let clicktopic = document.getElementById("clicktopics")
-topic.classList.add("d-none");
+// Generic toggle function for sections
+function toggleSection(buttonId, sectionId) {
+  const button = document.getElementById(buttonId);
+  const section = document.getElementById(sectionId);
 
-
-clicktopic.onclick=function()
-{
-    topic.classList.remove("d-none");
+  if (button && section) {
+    section.classList.add("d-none"); // Start hidden
+    button.addEventListener("click", () => {
+      section.classList.toggle("d-none");
+    });
+  }
 }
 
+// ========== Main Sections ==========
+toggleSection('clicktopics', 'topics');        // Show full topics area
+toggleSection('clickalgo', 'algorithmtopics'); // Algorithms section
+toggleSection('clickds', 'DStopics');          // Data Structures section
 
-let algo_topic = document.getElementById("algorithmtopics");
-let container = document.getElementById("algo-container");
-
-// Initially hide the topics
-algo_topic.classList.add("d-none");
-
-// Show on hover of entire container (button + topics)
-container.addEventListener("mouseenter", function () {
-    algo_topic.classList.remove("d-none");
-});
-
-// Hide when mouse leaves the container
-container.addEventListener("mouseleave", function () {
-    algo_topic.classList.add("d-none");
-    greedy_topic.classList.add("d-none");
-    dynamic_topic.classList.add("d-none");
-});
-
-let greedy_approach=document.getElementById("greedyapproach");
-let greedy_topic = document.getElementById("greedytopic");
-greedy_topic.classList.add("d-none");
-
-greedy_approach.onclick=function()
-{
-    greedy_topic.classList.remove("d-none");
-}
-
-let dynamic_programming=document.getElementById("dynamicprogramming");
-let dynamic_topic = document.getElementById("dynamictopic");
-dynamic_topic.classList.add("d-none");
-
-dynamic_programming.onclick=function()
-{
-    dynamic_topic.classList.remove("d-none");
-}
-
-
-let ds_topic=document.getElementById("DStopics");
-let click2=document.getElementById("clickds");
-ds_topic.classList.add("d-none");
-click2.onclick=function()
-{
-    ds_topic.classList.remove("d-none");
-}
+// ========== Nested Subtopics ==========
+toggleSection('greedyapproach', 'greedytopic');      // Inside Algorithms
+toggleSection('dynamicprogramming', 'dynamictopic'); // Inside Algorithms
