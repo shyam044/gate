@@ -15,6 +15,7 @@ function toggleSection(buttonId, sectionId) {
 toggleSection('clicktopics', 'topics');        // Show full topics area
 toggleSection('clickalgo', 'algorithmtopics'); // Algorithms section
 toggleSection('clickds', 'DStopics');          // Data Structures section
+toggleSection('clickprobability', 'probabilitytopics');  // Probability section toggle
 
 // ========== Nested Subtopics ==========
 toggleSection('greedyapproach', 'greedytopic');      // Inside Algorithms
