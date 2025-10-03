@@ -20,7 +20,7 @@ function signup() {
   const password = document.getElementById("signupPassword").value;
 
   if (email && password) {
-    fetch("https://gate-6jow.onrender.com/signup", {
+    fetch("/signup", {               // <-- relative endpoint
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })
@@ -30,14 +30,16 @@ function signup() {
       alert(data.message);
       if (data.success) window.location.href = "login.html";
     })
-    .catch(err => alert("Signup failed."));
+    .catch(err => { console.error(err); alert("Signup failed."); });
   } else {
     alert("Please fill all fields.");
   }
 }
 </script>
+
 </body>
 </html>
+
 
 
 
