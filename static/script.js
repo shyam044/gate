@@ -1,12 +1,3 @@
-
-  if (localStorage.getItem("isLoggedIn") !== "true") {
-    window.location.href = "login.html";
-  }
-    function logout() {
-    localStorage.removeItem("isLoggedIn");
-    window.location.href = "login.html";
-  }
-
 // Generic toggle function for sections
 
 function toggleSection(buttonId, sectionId) {
@@ -30,3 +21,4 @@ toggleSection('clickprobability', 'probabilitytopics');  // Probability section 
 // ========== Nested Subtopics ==========
 toggleSection('greedyapproach', 'greedytopic');      // Inside Algorithms
 toggleSection('dynamicprogramming', 'dynamictopic'); // Inside Algorithms
+
