@@ -1,3 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup - GATE Explorer</title>
+  <link rel="stylesheet" href="design.css">
+</head>
+<body>
+  <div class="card">
+    <h2>Signup</h2>
+    <input type="text" id="signupEmail" placeholder="Enter Email"><br><br>
+    <input type="password" id="signupPassword" placeholder="Enter Password"><br><br>
+    <button onclick="signup()">Signup</button>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
 <script>
 async function signup() {
   const email = document.getElementById("signupEmail").value.trim();
@@ -29,6 +45,10 @@ async function signup() {
   }
 }
 </script>
+
+
+</body>
+</html>
 
 
 
