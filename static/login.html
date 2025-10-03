@@ -20,7 +20,7 @@ function login() {
   const password = document.getElementById("loginPassword").value;
 
   if (email && password) {
-    fetch("https://gate-6jow.onrender.com/login", {
+    fetch("/login", {                // <-- relative endpoint
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })
@@ -29,18 +29,20 @@ function login() {
     .then(data => {
       alert(data.message);
       if (data.success) {
-        localStorage.setItem("token", data.token); // Save token permanently
+        localStorage.setItem("token", data.token); // Save token
         window.location.href = "index.html";
       }
     })
-    .catch(err => alert("Login failed."));
+    .catch(err => { console.error(err); alert("Login failed."); });
   } else {
     alert("Please fill all fields.");
   }
 }
 </script>
+
 </body>
 </html>
+
 
 
 
