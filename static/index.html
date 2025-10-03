@@ -17,7 +17,7 @@
 </head>
 
 <body>
-  <script>
+ <script>
 async function checkLogin() {
   const token = localStorage.getItem("token");
   if (!token) {
@@ -25,26 +25,31 @@ async function checkLogin() {
     return;
   }
 
-  const res = await fetch("https://gate-6jow.onrender.com/validate", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ token })
-  });
-  const data = await res.json();
-
-  if (!data.success) {
+  try {
+    const res = await fetch("/validate", {             // <-- relative endpoint
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ token })
+    });
+    const data = await res.json();
+    if (!data.success) {
+      window.location.href = "login.html";
+    } else {
+      console.log("Welcome back " + data.email);
+    }
+  } catch (err) {
+    console.error("Validate failed", err);
     window.location.href = "login.html";
-  } else {
-    console.log("Welcome back " + data.email);
   }
 }
 checkLogin();
 
 function logout() {
-  localStorage.removeItem("token");
+  localStorage.removeItem("token"); // ensure only token is used
   window.location.href = "login.html";
 }
 </script>
+
 
   <nav class="navbar navbar-expand-lg glass-navbar">
     <a class="navbar-brand d-flex align-items-center" href="#">
@@ -173,3 +178,4 @@ function logout() {
 
 
 </html>
+
