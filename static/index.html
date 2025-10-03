@@ -17,7 +17,7 @@
 </head>
 
 <body>
- <script>
+<script>
 async function checkLogin() {
   const token = localStorage.getItem("token");
   if (!token) {
@@ -26,29 +26,41 @@ async function checkLogin() {
   }
 
   try {
-    const res = await fetch("/validate", {             // <-- relative endpoint
-      method: "POST",
+    const res = await fetch('/validate', {
+      method: 'POST',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token })
     });
-    const data = await res.json();
-    if (!data.success) {
+
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); } 
+    catch (e) {
+      console.error('Validate: non-JSON response:', text);
+      window.location.href = 'login.html';
+      return;
+    }
+
+    if (!res.ok || !data.success) {
+      console.log('Token invalid or expired:', data);
       window.location.href = "login.html";
     } else {
       console.log("Welcome back " + data.email);
+      // optionally show email on the page
     }
   } catch (err) {
-    console.error("Validate failed", err);
+    console.error('Validate fetch error:', err);
     window.location.href = "login.html";
   }
 }
 checkLogin();
 
 function logout() {
-  localStorage.removeItem("token"); // ensure only token is used
+  localStorage.removeItem("token");
   window.location.href = "login.html";
 }
 </script>
+
 
 
   <nav class="navbar navbar-expand-lg glass-navbar">
@@ -178,4 +190,5 @@ function logout() {
 
 
 </html>
+
 
