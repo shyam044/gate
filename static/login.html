@@ -15,30 +15,42 @@
   </div>
 
 <script>
-function login() {
-  const email = document.getElementById("loginEmail").value;
+async function login() {
+  const email = document.getElementById("loginEmail").value.trim();
   const password = document.getElementById("loginPassword").value;
+  if (!email || !password) return alert("Please fill all fields.");
 
-  if (email && password) {
-    fetch("/login", {                // <-- relative endpoint
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+  try {
+    const res = await fetch('/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
-    })
-    .then(res => res.json())
-    .then(data => {
-      alert(data.message);
-      if (data.success) {
-        localStorage.setItem("token", data.token); // Save token
-        window.location.href = "index.html";
-      }
-    })
-    .catch(err => { console.error(err); alert("Login failed."); });
-  } else {
-    alert("Please fill all fields.");
+    });
+
+    const text = await res.text(); // read raw text first (safer for debugging)
+    let data;
+    try { data = JSON.parse(text); } 
+    catch (e) {
+      console.error('Login: non-JSON response:', text);
+      alert(`Server error: ${res.status} ${res.statusText}`);
+      return;
+    }
+
+    console.log('/login ->', res.status, data);
+    if (res.ok && data.success) {
+      localStorage.setItem('token', data.token);
+      window.location.href = 'index.html';
+    } else {
+      alert(data.message || 'Login failed');
+    }
+  } catch (err) {
+    console.error('Login fetch error:', err);
+    alert('Network error during login. Open DevTools Console and Network tab.');
   }
 }
 </script>
 
+
 </body>
 </html>
+
