@@ -1,44 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Signup - GATE Explorer</title>
-  <link rel="stylesheet" href="design.css">
-</head>
-<body>
-  <div class="card">
-    <h2>Signup</h2>
-    <input type="text" id="signupEmail" placeholder="Enter Email"><br><br>
-    <input type="password" id="signupPassword" placeholder="Enter Password"><br><br>
-    <button onclick="signup()">Signup</button>
-    <p>Already have an account? <a href="login.html">Login</a></p>
-  </div>
-
 <script>
-function signup() {
-  const email = document.getElementById("signupEmail").value;
+async function signup() {
+  const email = document.getElementById("signupEmail").value.trim();
   const password = document.getElementById("signupPassword").value;
+  if (!email || !password) return alert("Please fill all fields.");
 
-  if (email && password) {
-    fetch("/signup", {               // <-- relative endpoint
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+  try {
+    const res = await fetch('/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
-    })
-    .then(res => res.json())
-    .then(data => {
-      alert(data.message);
-      if (data.success) window.location.href = "login.html";
-    })
-    .catch(err => { console.error(err); alert("Signup failed."); });
-  } else {
-    alert("Please fill all fields.");
+    });
+
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); } 
+    catch (e) {
+      console.error('Signup: non-JSON response:', text);
+      alert(`Server error: ${res.status} ${res.statusText}`);
+      return;
+    }
+
+    console.log('/signup ->', res.status, data);
+    alert(data.message || 'Signup response received');
+    if (res.ok && data.success) window.location.href = 'login.html';
+  } catch (err) {
+    console.error('Signup fetch error:', err);
+    alert('Network error during signup. Check console.');
   }
 }
 </script>
 
-</body>
-</html>
+
 
 
 
