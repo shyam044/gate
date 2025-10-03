@@ -20,7 +20,7 @@ function login() {
   const password = document.getElementById("loginPassword").value;
 
   if (email && password) {
-    fetch("https://gate-6jow.onrender.com/login.html", {
+    fetch("https://gate-6jow.onrender.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })
@@ -41,6 +41,7 @@ function login() {
 </script>
 </body>
 </html>
+
 
 
 
