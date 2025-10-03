@@ -17,8 +17,9 @@ toggleSection('clicktopics', 'topics');        // Show full topics area
 toggleSection('clickalgo', 'algorithmtopics'); // Algorithms section
 toggleSection('clickds', 'DStopics');          // Data Structures section
 toggleSection('clickprobability', 'probabilitytopics');  // Probability section toggle
-
+toggleSection('clicklinear','lineartopics');
 // ========== Nested Subtopics ==========
 toggleSection('greedyapproach', 'greedytopic');      // Inside Algorithms
 toggleSection('dynamicprogramming', 'dynamictopic'); // Inside Algorithms
+
 
