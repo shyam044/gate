@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Login - GATE Explorer</title>
-  <link rel="stylesheet" href="design.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="card">
@@ -13,37 +13,33 @@
     <button onclick="login()">Login</button>
     <p>Don’t have an account? <a href="signup.html">Signup</a></p>
   </div>
-  <script>
-  function login() {
+
+<script>
+function login() {
   const email = document.getElementById("loginEmail").value;
   const password = document.getElementById("loginPassword").value;
 
   if (email && password) {
     fetch("https://gate-6jow.onrender.com/login", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })
     })
-    .then(response => response.json())
+    .then(res => res.json())
     .then(data => {
       alert(data.message);
       if (data.success) {
-        localStorage.setItem("isLoggedIn", "true"); // frontend session flag
+        localStorage.setItem("token", data.token); // Save token permanently
         window.location.href = "index.html";
       }
     })
-    .catch(error => {
-      console.error("Error:", error);
-      alert("Login failed.");
-    });
+    .catch(err => alert("Login failed."));
   } else {
     alert("Please fill all fields.");
   }
 }
-
 </script>
-
 </body>
 </html>
+
+
