@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Signup - GATE Explorer</title>
-  <link rel="stylesheet" href="design.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="card">
@@ -15,34 +15,28 @@
   </div>
 
 <script>
-  function signup() {
-    const email = document.getElementById("signupEmail").value;
-    const password = document.getElementById("signupPassword").value;
+function signup() {
+  const email = document.getElementById("signupEmail").value;
+  const password = document.getElementById("signupPassword").value;
 
-    if (email && password) {
-      fetch("https://gate-6jow.onrender.com/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, password })
-      })
-      .then(response => response.json())
-      .then(data => {
-        alert(data.message);
-        if (data.success) {
-          window.location.href = "login.html";
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        alert("Signup failed.");
-      });
-    } else {
-      alert("Please fill all fields.");
-    }
+  if (email && password) {
+    fetch("https://gate-6jow.onrender.com/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    })
+    .then(res => res.json())
+    .then(data => {
+      alert(data.message);
+      if (data.success) window.location.href = "login.html";
+    })
+    .catch(err => alert("Signup failed."));
+  } else {
+    alert("Please fill all fields.");
   }
+}
 </script>
-
 </body>
 </html>
+
+
