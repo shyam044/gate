@@ -1,3 +1,4 @@
+/* Global Reset */
 * {
   margin: 0;
   padding: 0;
@@ -11,6 +12,7 @@ body {
   padding-bottom: 50px;
 }
 
+/* Navbar */
 .navbar {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: sticky;
@@ -33,6 +35,7 @@ body {
   color: #00d1b2;
 }
 
+/* Card Design */
 .card {
   background-color: #ffffff;
   border-radius: 15px;
@@ -127,3 +130,105 @@ body {
   text-align: center;
 }
 
+
+
+
+/* === Beautiful Glassmorphism Navbar === */
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Image */
+.navbar-logo {
+  height: 50px;
+  width: 50px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Brand Name */
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0c5460;
+  letter-spacing: 1px;
+}
+
+/* Nav Links */
+/* === Beautiful Glassmorphism Navbar === */
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Image */
+.navbar-logo {
+  height: 50px;
+  width: 50px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Brand Name */
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0c5460;
+  letter-spacing: 1px;
+}
+
+/* Nav Links */
+.navbar-nav .nav-link {
+  color: #0c5460;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 12px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #17a2b8;
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background-color: #17a2b8;
+  transition: 0.4s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+/* Toggler Icon Custom Color */
+.navbar-toggler {
+  border: none;
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%280, 0, 0, 0.7%29' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}

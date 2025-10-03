@@ -1,4 +1,14 @@
+
+  if (localStorage.getItem("isLoggedIn") !== "true") {
+    window.location.href = "login.html";
+  }
+    function logout() {
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "login.html";
+  }
+
 // Generic toggle function for sections
+
 function toggleSection(buttonId, sectionId) {
   const button = document.getElementById(buttonId);
   const section = document.getElementById(sectionId);

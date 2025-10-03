@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup - GATE Explorer</title>
+  <link rel="stylesheet" href="design.css">
+</head>
+<body>
+  <div class="card">
+    <h2>Signup</h2>
+    <input type="text" id="signupEmail" placeholder="Enter Email"><br><br>
+    <input type="password" id="signupPassword" placeholder="Enter Password"><br><br>
+    <button onclick="signup()">Signup</button>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
+<script>
+  function signup() {
+    const email = document.getElementById("signupEmail").value;
+    const password = document.getElementById("signupPassword").value;
+
+    if (email && password) {
+      fetch("http://localhost:5000/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(data.message);
+        if (data.success) {
+          window.location.href = "login.html";
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("Signup failed.");
+      });
+    } else {
+      alert("Please fill all fields.");
+    }
+  }
+</script>
+
+</body>
+</html>
