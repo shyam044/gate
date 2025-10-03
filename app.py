@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.exc import IntegrityError
-import os
+import os, secrets
 
 app = Flask(__name__, static_folder="static")
 CORS(app)
@@ -16,11 +16,12 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
+    token = db.Column(db.String(200), unique=True, nullable=True)
 
 with app.app_context():
     db.create_all()
 
-# ========== Routes ==========
+# ---------- API ----------
 
 @app.route("/signup", methods=["POST"])
 def signup():
@@ -49,11 +50,25 @@ def login():
 
     user = User.query.filter_by(email=email).first()
     if user and check_password_hash(user.password, password):
-        return jsonify({"success": True, "message": "Login successful!"})
+        # Generate new token if not already
+        if not user.token:
+            user.token = secrets.token_hex(16)
+            db.session.commit()
+        return jsonify({"success": True, "message": "Login successful!", "token": user.token})
     else:
         return jsonify({"success": False, "message": "Invalid email or password."})
 
-# ========== Serve Frontend ==========
+@app.route("/validate", methods=["POST"])
+def validate():
+    data = request.get_json()
+    token = data.get("token")
+    user = User.query.filter_by(token=token).first()
+    if user:
+        return jsonify({"success": True, "email": user.email})
+    else:
+        return jsonify({"success": False})
+
+# ---------- Serve Frontend ----------
 
 @app.route("/")
 def home():
@@ -63,6 +78,7 @@ def home():
 def static_files(filename):
     return send_from_directory(app.static_folder, filename)
 
-# Run local (Render uses gunicorn)
 if __name__ == "__main__":
     app.run(debug=True)
+
+
